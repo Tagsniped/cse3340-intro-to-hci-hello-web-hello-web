@@ -1,2 +1,141 @@
 <!-- AN HTML COMMENT -->
- 
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>My Projects Hub</title>
+  <meta name="color-scheme" content="dark light" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="topbar">
+    <div class="brand">
+      <div class="brand-mark" aria-hidden="true"></div>
+      <div class="brand-text">
+        <div class="brand-title">Projects Hub</div>
+        <div class="brand-subtitle">One home for all my standalone builds</div>
+      </div>
+    </div>
+
+    <nav class="topbar-actions" aria-label="Primary">
+      <button class="chip" id="btnProjects" aria-pressed="true">Projects</button>
+      <button class="chip" id="btnDashboard" aria-pressed="false">Dashboard</button>
+      <button class="chip chip-ghost" id="btnTheme" title="Toggle theme" aria-label="Toggle theme">
+        Theme
+      </button>
+    </nav>
+  </header>
+
+  <main id="main" class="container">
+    <!-- PROJECTS VIEW -->
+    <section id="viewProjects" class="view view-active" aria-label="Projects">
+      <div class="toolbar">
+        <div class="toolbar-left">
+          <h1 class="h1">Your project shelf</h1>
+          <p class="muted">Polished, minimal, and focused on the work.</p>
+        </div>
+
+        <div class="toolbar-right">
+          <div class="search">
+            <input id="searchInput" type="search" placeholder="Search projects…" autocomplete="off" />
+            <span class="search-icon" aria-hidden="true">⌕</span>
+          </div>
+
+          <div class="segmented" role="group" aria-label="Layout mode">
+            <button class="seg-btn" data-layout="grid" aria-pressed="true">Grid</button>
+            <button class="seg-btn" data-layout="list" aria-pressed="false">List</button>
+            <button class="seg-btn" data-layout="compact" aria-pressed="false">Compact</button>
+          </div>
+        </div>
+      </div>
+
+      <div id="cards" class="cards cards-grid" aria-live="polite"></div>
+
+      <footer class="footer">
+        <span class="muted">Tip: use Dashboard to choose widget-style persona views per project.</span>
+      </footer>
+    </section>
+
+    <!-- DASHBOARD VIEW -->
+    <section id="viewDashboard" class="view" aria-label="Dashboard">
+      <div class="toolbar">
+        <div class="toolbar-left">
+          <h1 class="h1">Dashboard</h1>
+          <p class="muted">Pick what shows up and how it looks (widget-style “personas”).</p>
+        </div>
+
+        <div class="toolbar-right">
+          <button class="btn" id="btnReset">Reset to defaults</button>
+          <button class="btn btn-primary" id="btnSave">Save</button>
+        </div>
+      </div>
+
+      <div class="dash">
+        <section class="panel">
+          <h2 class="h2">Global settings</h2>
+
+          <div class="form-row">
+            <label class="label" for="dashLayout">Default layout</label>
+            <select id="dashLayout" class="select">
+              <option value="grid">Grid</option>
+              <option value="list">List</option>
+              <option value="compact">Compact</option>
+            </select>
+          </div>
+
+          <div class="form-row">
+            <label class="label" for="dashSort">Sort</label>
+            <select id="dashSort" class="select">
+              <option value="pinned">Pinned first</option>
+              <option value="recent">Recently updated</option>
+              <option value="name">Name (A–Z)</option>
+            </select>
+          </div>
+
+          <div class="form-row">
+            <label class="label" for="dashAccent">Accent intensity</label>
+            <input id="dashAccent" class="range" type="range" min="0" max="100" value="25" />
+            <div class="hint muted">Keeps Cyber Orange subtle.</div>
+          </div>
+        </section>
+
+        <section class="panel panel-wide">
+          <div class="panel-head">
+            <h2 class="h2">Projects</h2>
+            <p class="muted">Toggle visibility, pin, and choose each project’s persona view.</p>
+          </div>
+
+          <div id="dashList" class="dash-list" aria-live="polite"></div>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <!-- MODAL -->
+  <dialog id="modal" class="modal">
+    <div class="modal-head">
+      <div>
+        <div id="modalTitle" class="modal-title">Project</div>
+        <div id="modalMeta" class="modal-meta muted"></div>
+      </div>
+      <form method="dialog">
+        <button class="icon-btn" aria-label="Close">✕</button>
+      </form>
+    </div>
+
+    <div id="modalBody" class="modal-body"></div>
+
+    <div class="modal-foot">
+      <a id="modalLink" class="btn btn-primary" href="#" target="_blank" rel="noreferrer">Open project</a>
+      <form method="dialog">
+        <button class="btn">Close</button>
+      </form>
+    </div>
+  </dialog>
+
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>The Market Basket • Seasonal Produce</title>
+  <meta name="color-scheme" content="dark light" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <div class="brand-mark" aria-hidden="true"></div>
+      <div>
+        <div class="brand-title">The Market Basket</div>
+        <div class="brand-subtitle">Find what’s fresh at the market today</div>
+      </div>
+    </div>
+
+    <div class="topbar-actions">
+      <button class="chip" id="btnPersona" title="Cycle persona view">Persona: <span id="personaLabel">Default</span></button>
+      <button class="chip chip-ghost" id="btnTheme" aria-label="Toggle theme">Theme</button>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div class="hero-left">
+        <h1 class="h1">Seasonal Produce</h1>
+        <p class="muted">Choose a market to localize recommendations, then scan what’s “In Season Now.”</p>
+      </div>
+
+      <div class="hero-right">
+        <div class="select-wrap">
+          <label class="label" for="marketSelect">Select your farmers market</label>
+          <div class="select-row">
+            <select id="marketSelect" class="select"></select>
+            <button class="btn" id="btnChangeMarket" type="button">Change</button>
+          </div>
+          <div class="hint muted" id="marketMeta"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="controls">
+      <div class="today">
+        <div class="today-label">Today:</div>
+        <div class="today-value" id="todayValue">—</div>
+      </div>
+
+      <div class="controls-right">
+        <div class="search">
+          <input id="searchInput" type="search" placeholder="Search produce…" autocomplete="off" />
+          <span class="search-icon" aria-hidden="true">⌕</span>
+        </div>
+
+        <div class="segmented" role="group" aria-label="Sort mode">
+          <button class="seg-btn" data-sort="fresh" aria-pressed="true">Fresh First</button>
+          <button class="seg-btn" data-sort="az" aria-pressed="false">A–Z</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="legend">
+      <div class="legend-item"><span class="swatch swatch-peak"></span> Peak Season</div>
+      <div class="legend-item"><span class="swatch swatch-off"></span> Off Season</div>
+      <div class="legend-item"><span class="swatch swatch-today"></span> Today</div>
+    </section>
+
+    <section>
+      <div id="list" class="list" aria-live="polite"></div>
+    </section>
+
+    <footer class="footer muted">
+      Prototype: expandable cards (scan → evaluate). Market selection localizes “in season now.”
+    </footer>
+  </main>
+
+  <dialog id="marketModal" class="modal">
+    <div class="modal-head">
+      <div>
+        <div class="modal-title">Select Market</div>
+        <div class="modal-meta muted">Search and pick a market to localize seasonality.</div>
+      </div>
+      <form method="dialog"><button class="icon-btn" aria-label="Close">✕</button></form>
+    </div>
+
+    <div class="modal-body">
+      <div class="search modal-search">
+        <input id="marketSearch" type="search" placeholder="Search markets…" autocomplete="off" />
+        <span class="search-icon" aria-hidden="true">⌕</span>
+      </div>
+      <div id="marketList" class="market-list" aria-live="polite"></div>
+    </div>
+
+    <div class="modal-foot">
+      <form method="dialog"><button class="btn">Close</button></form>
+    </div>
+  </dialog>
+
+  <script src="app.js"></script>
+</body>
+</html>
