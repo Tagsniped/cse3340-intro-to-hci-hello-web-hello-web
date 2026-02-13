@@ -95,7 +95,7 @@ const DEFAULT_STATE = {
   ]
 };
 
-const STORAGE_KEY = "projectsHubState_v1";
+const STORAGE_KEY = "projectsHubState_v2";
 
 function loadState() {
   try {
